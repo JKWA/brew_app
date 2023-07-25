@@ -1,1 +1,1 @@
-export 'view/power.dart';
+export 'view/power_page.dart';

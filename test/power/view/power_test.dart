@@ -12,8 +12,7 @@ void main() {
     createTestApp = setUpValues.$1;
   });
 
-  testWidgets('BrewPage is shown when it is the child of createTestApp',
-      (WidgetTester tester) async {
+  testWidgets('PowerPage is shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       createTestApp(
         const PowerPage(

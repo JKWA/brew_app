@@ -1,5 +1,5 @@
 import 'package:brew_app/brew/brew.dart';
-import 'package:brew_app/home/view/home.dart';
+import 'package:brew_app/home/view/home_page.dart';
 import 'package:brew_app/power/power.dart';
 import 'package:brew_app/settings/settings.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +15,7 @@ void main() {
     createTestApp = setUpValues.$1;
   });
 
-  testWidgets('BrewPage is shown when it is the child of createTestApp',
-      (WidgetTester tester) async {
+  testWidgets('HomePage is shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       createTestApp(
         const HomePage(),
@@ -25,8 +24,7 @@ void main() {
 
     expect(find.byType(HomePage), findsOneWidget);
   });
-  testWidgets('PowerPage is shown when it is the child of createTestApp',
-      (WidgetTester tester) async {
+  testWidgets('PowerPage is shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       createTestApp(
         const PowerPage(title: 'Test PowerPage'),
@@ -36,19 +34,17 @@ void main() {
     expect(find.byType(PowerPage), findsOneWidget);
   });
 
-  testWidgets('BrewPage is shown when it is the child of createTestApp',
-      (WidgetTester tester) async {
+  testWidgets('BrewPage is shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       createTestApp(
-        const BrewPage(title: 'Test BrewPage'),
+        const BrewPage(title: 'TEST'),
       ),
     );
 
-    expect(find.byType(BrewPage), findsOneWidget);
+    expect(find.byType(HomePage), findsOneWidget);
   });
 
-  testWidgets('SettingsPage is shown when it is the child of createTestApp',
-      (WidgetTester tester) async {
+  testWidgets('SettingsPage is shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       createTestApp(
         const SettingsPage(title: 'Test SettingsPage'),

@@ -1,1 +1,1 @@
-export 'view/language.dart';
+export 'view/language_control.dart';

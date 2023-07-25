@@ -10,7 +10,7 @@ void main() {
     model = LanguageConfigModel();
   });
 
-  group('changeLanguage', () {
+  group('LanguageConfigModel', () {
     test('updates the current locale and notify listeners', () async {
       const newLocale = Locale('fr');
       var called = false;

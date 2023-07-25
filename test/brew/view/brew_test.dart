@@ -14,8 +14,7 @@ void main() {
     brewCubit = setUpValues.$4;
   });
 
-  testWidgets('BrewPage is shown when it is the child of createTestApp',
-      (WidgetTester tester) async {
+  testWidgets('BrewPage is shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       createTestApp(
         const BrewPage(

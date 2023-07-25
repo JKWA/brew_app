@@ -12,7 +12,7 @@ void main() {
     createTestApp = setUpValues.$1;
   });
 
-  testWidgets('TempControl is shown', (WidgetTester tester) async {
+  testWidgets('SettingsPage is shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       createTestApp(
         const SettingsPage(

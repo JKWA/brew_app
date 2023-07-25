@@ -1,4 +1,4 @@
-import 'package:brew_app/brew/view/brew.dart';
+import 'package:brew_app/brew/view/brew_page.dart';
 import 'package:brew_app/home/data/button_data.dart';
 import 'package:brew_app/l10n/l10n.dart';
 import 'package:brew_app/power/power.dart';

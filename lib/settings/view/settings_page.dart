@@ -1,5 +1,5 @@
 import 'package:brew_app/l10n/l10n.dart';
-import 'package:brew_app/language/view/language.dart';
+import 'package:brew_app/language/view/language_control.dart';
 import 'package:brew_app/temp/temp.dart';
 import 'package:flutter/material.dart';
 
