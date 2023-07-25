@@ -1,0 +1,21 @@
+{
+    "@@locale": "en",
+    "appName": "Breville",
+    "main_button_A": "Power",
+    "main_button_B": "Grind",
+    "main_button_C": "Brew",
+    "main_button_D": "Steam",
+    "main_button_E": "Settings",
+    "main_button_F": "F",
+    "brew_temp": "Brewing temperature",
+    "brew_single_button": "Single",
+    "brew_double_button": "Double",
+    "brew_idle_message": "Not brewing",
+    "brew_single_message": "Brewing single shot",
+    "brew_double_message": "Brewing double shot",
+    "goodby_message": "Goodbye",
+    "milk_whole": "Whole",
+    "milk_soy": "Soy",
+    "milk_almond": "Almond",
+    "milk_oat": "Oat"
+}

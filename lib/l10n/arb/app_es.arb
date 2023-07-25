@@ -1,0 +1,21 @@
+{
+    "@@locale": "es",
+    "appName": "Breville",
+    "main_button_A": "Encendido",
+    "main_button_B": "Moler",
+    "main_button_C": "Preparar",
+    "main_button_D": "Vapor",
+    "main_button_E": "Ajustes",
+    "main_button_F": "F",
+    "brew_temp": "Temperatura de preparación",
+    "brew_single_button": "Solo",
+    "brew_double_button": "Doble",
+    "brew_idle_message": "No preparando",
+    "brew_single_message": "Preparando un solo shot",
+    "brew_double_message": "Preparando un doble shot",
+    "goodby_message": "Adiós",
+    "milk_whole": "Entera",
+    "milk_soy": "Soja",
+    "milk_almond": "Almendra",
+    "milk_oat": "Avena"
+  }
