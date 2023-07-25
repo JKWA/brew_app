@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "520176794717",
+    "project_id": "brewapp-1",
+    "storage_bucket": "brewapp-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520176794717:android:f5067705dd43f925eba1b4",
+        "android_client_info": {
+          "package_name": "org.name.brew_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520176794717-864tttbeublt664s34fb2qjdvlrlt6ni.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVcmuebpihW1Mwc03h7nHQQBlfzCCq_2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520176794717-864tttbeublt664s34fb2qjdvlrlt6ni.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "520176794717-k2vc646tnl271hvb06fmhn30dmj4qu1u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "abc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
