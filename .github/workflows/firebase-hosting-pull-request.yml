@@ -14,9 +14,11 @@ jobs:
         with:
           flutter-version: '3.10.6'
           
-      - run: flutter pub get 
+      - name: Flutter get packages
+        run: flutter pub get 
 
-      - run: flutter run --flavor development --target lib/main_development.dart
+      - name: Flutter build web
+        run: flutter build web --target=lib/main_development.dart
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
