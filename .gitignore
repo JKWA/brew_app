@@ -46,6 +46,7 @@ version
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.fvm/flutter_sdk
 .packages
 .pub-cache/
 .pub/
