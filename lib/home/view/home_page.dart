@@ -1,4 +1,5 @@
 import 'package:brew_app/brew/view/brew_page.dart';
+import 'package:brew_app/grind/grind.dart';
 import 'package:brew_app/home/data/button_data.dart';
 import 'package:brew_app/l10n/l10n.dart';
 import 'package:brew_app/power/power.dart';
@@ -54,10 +55,20 @@ class ButtonContainer extends StatelessWidget {
                         ),
                       );
                     }
+                    if (index == 1) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<GrindPage>(
+                          builder: (context) => GrindPage(
+                            title: list[index].$1,
+                          ),
+                        ),
+                      );
+                    }
                     if (index == 2) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute<SteamPage>(
+                        MaterialPageRoute<BrewPage>(
                           builder: (context) => BrewPage(
                             title: list[index].$1,
                           ),
