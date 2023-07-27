@@ -1,11 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:fpdart/fpdart.dart';
+import 'package:brew_app/utility/predicate.dart';
 
 enum CoffeeMakerStatus { idle, single, double }
 
-final isIdle = Predicate<CoffeeMakerStatus>(
-  (CoffeeMakerStatus status) => status == CoffeeMakerStatus.idle,
-);
+Predicate<CoffeeMakerStatus> isIdle =
+    (CoffeeMakerStatus status) => status == CoffeeMakerStatus.idle;
 
 class BrewCubit extends Cubit<CoffeeMakerStatus> {
   BrewCubit() : super(CoffeeMakerStatus.idle);

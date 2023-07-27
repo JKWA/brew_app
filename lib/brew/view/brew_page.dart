@@ -1,9 +1,9 @@
 import 'package:brew_app/brew/brew.dart';
 import 'package:brew_app/config/spacing.dart';
 import 'package:brew_app/l10n/l10n.dart';
+import 'package:brew_app/utility/predicate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fpdart/fpdart.dart';
 
 class BrewPage extends StatelessWidget {
   const BrewPage({required this.title, super.key});
@@ -24,10 +24,10 @@ class BrewPage extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: BlocBuilder<BrewCubit, CoffeeMakerStatus>(
             builder: (context, status) {
-              return isIdle(status).match(
-                () => const BrewInfoWidget(),
+              return match<CoffeeMakerStatus, Widget>(
                 () => const BrewButtons(),
-              );
+                () => const BrewInfoWidget(),
+              )(isIdle)(status);
             },
           ),
         ),
