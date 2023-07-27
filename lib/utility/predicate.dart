@@ -22,7 +22,7 @@ Predicate<A> not<A>(Predicate<A> predicate) {
   };
 }
 
-Predicate<B> Function(Predicate<A>) contramap<A, B>(A Function(B) f) {
+Predicate<B> Function(Predicate<A>) contramap<B, A>(A Function(B) f) {
   return (Predicate<A> p) {
     return (B value) => p(f(value));
   };

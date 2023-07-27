@@ -28,7 +28,7 @@ void main() {
     expect(isOdd(2), false);
   });
 
-  final isStringLengthEven = contramap<int, String>((s) => s.length)(isEven);
+  final isStringLengthEven = contramap<String, int>((s) => s.length)(isEven);
 
   test('contramap logic', () {
     expect(isStringLengthEven('even'), true);
