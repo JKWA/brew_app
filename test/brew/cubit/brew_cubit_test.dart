@@ -7,34 +7,54 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('BrewCubit', () {
     test('initial state should be idle', () {
-      expect(BrewCubit().state, CoffeeMakerStatus.idle);
+      expect(BrewCubit().state.status, CoffeeMakerStatus.idle);
     });
 
-    blocTest<BrewCubit, CoffeeMakerStatus>(
-      'emits [CoffeeMakerStatus.single, CoffeeMakerStatus.idle] when startSingleShot is called',
+    blocTest<BrewCubit, BrewStatus>(
+      'emits progress status from 0.1 to 1.0 then idle when startSingleShot is called',
       build: BrewCubit.new,
       act: (cubit) => cubit.startSingleShot(),
-      expect: () => [CoffeeMakerStatus.single, CoffeeMakerStatus.idle],
+      expect: () => [
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 0.1),
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 0.2),
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 0.3),
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 0.4),
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 0.5),
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 0.6),
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 0.7),
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 0.8),
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 0.9),
+        const BrewStatus(status: CoffeeMakerStatus.single, progress: 1),
+        const BrewStatus(status: CoffeeMakerStatus.idle),
+      ],
       wait: const Duration(
-        seconds: 4,
-      ), // Adjust the wait duration to account for delay in the cubit
+        seconds: 11,
+      ),
     );
 
-    blocTest<BrewCubit, CoffeeMakerStatus>(
-      'emits [CoffeeMakerStatus.double, CoffeeMakerStatus.idle] when startDoubleShot is called',
+    blocTest<BrewCubit, BrewStatus>(
+      'emits progress status from 0.1 to 0.25 over 5 seconds when startDoubleShot is called',
       build: BrewCubit.new,
       act: (cubit) => cubit.startDoubleShot(),
-      expect: () => [CoffeeMakerStatus.double, CoffeeMakerStatus.idle],
+      expect: () => [
+        const BrewStatus(status: CoffeeMakerStatus.double, progress: 0.05),
+        const BrewStatus(status: CoffeeMakerStatus.double, progress: 0.1),
+        const BrewStatus(status: CoffeeMakerStatus.double, progress: 0.15),
+        const BrewStatus(status: CoffeeMakerStatus.double, progress: 0.2),
+        const BrewStatus(status: CoffeeMakerStatus.double, progress: 0.25),
+      ],
       wait: const Duration(
-        seconds: 7,
-      ), // Adjust the wait duration to account for delay in the cubit
+        seconds: 5,
+      ),
     );
 
-    blocTest<BrewCubit, CoffeeMakerStatus>(
+    blocTest<BrewCubit, BrewStatus>(
       'emits [CoffeeMakerStatus.idle] when stopBrewing is called',
       build: BrewCubit.new,
       act: (cubit) => cubit.stopBrewing(),
-      expect: () => [CoffeeMakerStatus.idle],
+      expect: () => [
+        const BrewStatus(status: CoffeeMakerStatus.idle),
+      ],
     );
   });
 }

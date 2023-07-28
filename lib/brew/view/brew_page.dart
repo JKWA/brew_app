@@ -1,6 +1,7 @@
 import 'package:brew_app/brew/brew.dart';
 import 'package:brew_app/config/spacing.dart';
 import 'package:brew_app/l10n/l10n.dart';
+import 'package:brew_app/temp/temp.dart';
 import 'package:brew_app/utility/predicate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,12 +23,12 @@ class BrewPage extends StatelessWidget {
         padding: EdgeInsets.all(space.mediumSpacing),
         child: Align(
           alignment: Alignment.topCenter,
-          child: BlocBuilder<BrewCubit, CoffeeMakerStatus>(
-            builder: (context, status) {
+          child: BlocBuilder<BrewCubit, BrewStatus>(
+            builder: (context, brewStatus) {
               return match<CoffeeMakerStatus, Widget>(
                 () => const BrewButtons(),
                 () => const BrewInfoWidget(),
-              )(isIdle)(status);
+              )(isIdle)(brewStatus.status);
             },
           ),
         ),
@@ -84,11 +85,14 @@ class BrewInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final temp = context.watch<TempCubit>().state;
 
-    return BlocBuilder<BrewCubit, CoffeeMakerStatus>(
-      builder: (context, status) {
+    return BlocBuilder<BrewCubit, BrewStatus>(
+      builder: (context, brewStatus) {
         late String message;
-        switch (status) {
+        final space = context.read<SpacingConfigModel>();
+
+        switch (brewStatus.status) {
           case CoffeeMakerStatus.idle:
             message = l10n.brew_idle_message;
           case CoffeeMakerStatus.double:
@@ -97,9 +101,23 @@ class BrewInfoWidget extends StatelessWidget {
           case CoffeeMakerStatus.single:
             message = l10n.brew_single_message;
         }
-        return Text(
-          message,
-          style: Theme.of(context).textTheme.headlineSmall,
+        return SizedBox(
+          width: space.measure,
+          child: Column(
+            children: [
+              LinearProgressIndicator(
+                value: brewStatus.progress,
+                semanticsLabel: 'Brew time progress',
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: space.largeSpacing),
+                child: Text(
+                  '$message ${temp / 10} celsius',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

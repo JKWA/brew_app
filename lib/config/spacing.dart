@@ -7,6 +7,7 @@ class SpacingConfigModel extends ChangeNotifier {
   double get mediumSpacing => _mediumSpacing;
   double get largeSpacing => _mediumSpacing * 2;
   double get xLargeSpacing => _mediumSpacing * 4;
+  double get measure => 400;
 
   void updateMediumSpacing(double newSpacing) {
     _mediumSpacing = newSpacing;

@@ -14,7 +14,8 @@ import 'package:provider/provider.dart';
   BrewCubit,
   TempCubit
 ) setUpTestEnvironment() {
-  final brewCubit = BrewCubit()..emit(CoffeeMakerStatus.idle);
+  final brewCubit = BrewCubit()
+    ..emit(const BrewStatus(status: CoffeeMakerStatus.idle));
   final tempCubit = TempCubit()..emit(930);
   final milkCubit = MilkCubit()..emit(Milk.whole);
 

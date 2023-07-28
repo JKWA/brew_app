@@ -28,7 +28,7 @@ void main() {
 
   testWidgets('BrewButtons are shown when BrewCubit state is idle',
       (WidgetTester tester) async {
-    brewCubit.emit(CoffeeMakerStatus.idle);
+    brewCubit.emit(const BrewStatus(status: CoffeeMakerStatus.idle));
 
     await tester.pumpWidget(
       createTestApp(
@@ -43,7 +43,7 @@ void main() {
 
   testWidgets('BrewInfoWidget is shown when BrewCubit state is single',
       (WidgetTester tester) async {
-    brewCubit.emit(CoffeeMakerStatus.single);
+    brewCubit.emit(const BrewStatus(status: CoffeeMakerStatus.single));
     await tester.pumpWidget(
       createTestApp(
         const BrewPage(
@@ -57,7 +57,7 @@ void main() {
 
   testWidgets('BrewInfoWidget is shown when BrewCubit state is double',
       (WidgetTester tester) async {
-    brewCubit.emit(CoffeeMakerStatus.double);
+    brewCubit.emit(const BrewStatus(status: CoffeeMakerStatus.double));
     await tester.pumpWidget(
       createTestApp(
         const BrewPage(
