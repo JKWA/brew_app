@@ -73,9 +73,9 @@ class App extends StatelessWidget {
             ),
           );
         } else if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text('Loading...');
+          return const Center(child: Text('Loading...'));
         }
-        return const Text('Error initializing Application');
+        return const Center(child: Text('Error initializing Application'));
       },
     );
   }

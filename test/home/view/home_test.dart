@@ -41,7 +41,7 @@ void main() {
       ),
     );
 
-    expect(find.byType(HomePage), findsOneWidget);
+    expect(find.byType(BrewPage), findsOneWidget);
   });
 
   testWidgets('SettingsPage is shown', (WidgetTester tester) async {
