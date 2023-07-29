@@ -16,36 +16,16 @@ Milk stringToMilk(String string) {
   );
 }
 
-Future<Milk> _getMilk() async {
-  final logger = Logger();
-
-  try {
-    final prefs = await SharedPreferences.getInstance();
-    final milkString = prefs.getString('milk_type') ?? 'whole';
-    return stringToMilk(milkString);
-  } catch (e) {
-    logger.e('Failed to load milk type from SharedPreferences: $e');
-    return Milk.whole;
-  }
-}
-
-Future<void> _saveMilk(Milk milk) async {
-  final logger = Logger();
-
-  try {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('milk_type', milkToString(milk));
-  } catch (e) {
-    logger.e('Failed to save milk type to SharedPreferences: $e');
-  }
-}
-
 class MilkCubit extends Cubit<Milk> {
-  MilkCubit() : super(Milk.whole) {
+  MilkCubit({required this.sharedPreferences}) : super(Milk.whole) {
     _initialize();
     _loadMilk();
   }
+
+  final SharedPreferences sharedPreferences;
   final _updateController = BehaviorSubject<Milk>();
+  static const refKey = 'milk_type';
+  static const defaultMilk = Milk.whole;
 
   void _initialize() {
     _updateController.stream
@@ -70,5 +50,28 @@ class MilkCubit extends Cubit<Milk> {
   Future<void> close() {
     _updateController.close();
     return super.close();
+  }
+
+  Future<Milk> _getMilk() async {
+    final logger = Logger();
+
+    try {
+      final milkString =
+          sharedPreferences.getString(refKey) ?? defaultMilk.toString();
+      return stringToMilk(milkString);
+    } catch (e) {
+      logger.e('Failed to load milk type from SharedPreferences: $e');
+      return defaultMilk;
+    }
+  }
+
+  Future<void> _saveMilk(Milk milk) async {
+    final logger = Logger();
+
+    try {
+      await sharedPreferences.setString(refKey, milkToString(milk));
+    } catch (e) {
+      logger.e('Failed to save milk type to SharedPreferences: $e');
+    }
   }
 }

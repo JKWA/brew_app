@@ -13,10 +13,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 class App extends StatelessWidget {
   const App({super.key});
 
-//   final prefs = await SharedPreferences.getInstance();
-
-// final grindCubit = GrindCubit(sharedPreferences: prefs);
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SharedPreferences>(
@@ -37,10 +33,12 @@ class App extends StatelessWidget {
               BlocProvider<TempCubit>(
                 create: (_) => TempCubit(),
               ),
-              BlocProvider<MilkCubit>(
-                create: (_) => MilkCubit(),
-              ),
               Provider<SharedPreferences>.value(value: snapshot.data!),
+              BlocProvider<MilkCubit>(
+                create: (context) => MilkCubit(
+                  sharedPreferences: context.read<SharedPreferences>(),
+                ),
+              ),
               BlocProvider<GrindCubit>(
                 create: (context) => GrindCubit(
                   sharedPreferences: context.read<SharedPreferences>(),

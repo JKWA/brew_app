@@ -5,19 +5,26 @@ import 'package:brew_app/steam/steam.dart';
 import 'package:brew_app/temp/temp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class MockSharedPreferences extends Mock implements SharedPreferences {}
 
 (
   MultiProvider Function(Widget child),
   SpacingConfigModel,
   LanguageConfigModel,
   BrewCubit,
-  TempCubit
+  TempCubit,
+  MilkCubit
 ) setUpTestEnvironment() {
   final brewCubit = BrewCubit()
     ..emit(const BrewStatus(status: CoffeeMakerStatus.idle));
   final tempCubit = TempCubit()..emit(930);
-  final milkCubit = MilkCubit()..emit(Milk.whole);
+  final mockSharedPreferences = MockSharedPreferences();
+  final milkCubit = MilkCubit(sharedPreferences: mockSharedPreferences)
+    ..emit(Milk.whole);
 
   final spacingConfigModel = SpacingConfigModel();
   final languageConfigModel = LanguageConfigModel();
@@ -55,5 +62,6 @@ import 'package:provider/provider.dart';
     languageConfigModel,
     brewCubit,
     tempCubit,
+    milkCubit,
   );
 }
