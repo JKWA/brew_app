@@ -13,8 +13,8 @@ class TempControl extends StatelessWidget {
       children: [
         Slider(
           value: temp.toDouble(),
-          min: tempLowBound.toDouble(),
-          max: tempHighBound.toDouble(),
+          min: TempCubit.tempLowBound.toDouble(),
+          max: TempCubit.tempHighBound.toDouble(),
           label: (temp / 10).toStringAsFixed(1),
           onChanged: (double value) {
             context.read<TempCubit>().update(value.toInt());

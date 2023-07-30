@@ -27,13 +27,15 @@ class App extends StatelessWidget {
               ChangeNotifierProvider<LanguageConfigModel>(
                 create: (_) => LanguageConfigModel(),
               ),
+              Provider<SharedPreferences>.value(value: snapshot.data!),
               BlocProvider<BrewCubit>(
                 create: (_) => BrewCubit(),
               ),
               BlocProvider<TempCubit>(
-                create: (_) => TempCubit(),
+                create: (context) => TempCubit(
+                  sharedPreferences: context.read<SharedPreferences>(),
+                ),
               ),
-              Provider<SharedPreferences>.value(value: snapshot.data!),
               BlocProvider<MilkCubit>(
                 create: (context) => MilkCubit(
                   sharedPreferences: context.read<SharedPreferences>(),
